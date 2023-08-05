@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { useState } from "react";
 
@@ -21,30 +20,49 @@ export default function Home() {
   const divide = () => {
     setResult(parseInt(num1) / parseInt(num2));
   };
+  const reset = () => {
+    setResult(0);
+    setNum1(0);
+    setNum2(0);
+  };
   return (
-    <div className="bg-green-950">
-      <div className="container mx-auto h-screen flex flex-col items-center justify-center">
-        <h1 className="text-white text-2xl">Messi</h1>
-        <div className="bg-white p-10 rounded text-2xl">{result}</div>
-        <div className="flex items-center justify-center">
-          <input
-            type="number"
-            value={num1}
-            onChange={(e) => setNum1(e.target.value)}
-          />
-          <input
-            type="number"
-            value={num2}
-            onChange={(e) => setNum2(e.target.value)}
-          />
-        </div>
-        <div>
-          <button onClick={add}>Add</button>
-          <button onClick={subtract}>Add</button>
-          <button onClick={multiply}>Add</button>
-          <button onClick={divide}>Add</button>
-        </div>
+    <div className="bg-black min-h-screen flex flex-col items-center justify-center space-y-5">
+      <h1 className="text-white text-5xl">Calculator</h1>
+      <div className="bg-white px-10 py-5 rounded text-5xl my-10">{result}</div>
+      <div className="flex flex-col items-center justify-center space-y-5 sm:space-y-0 sm:flex-row sm:space-x-5">
+        <input
+          className="py-2 rounded text-center text-xl"
+          type="number"
+          value={num1}
+          onChange={(e) => setNum1(e.target.value)}
+        />
+        <input
+          className="py-2 rounded text-center text-xl"
+          type="number"
+          value={num2}
+          onChange={(e) => setNum2(e.target.value)}
+        />
       </div>
+      <div className="flex flex-col items-center justify-center space-y-5 sm:space-y-0 sm:flex-row sm:space-x-5">
+        <button className="bg-red-300 py-2 px-10 rounded" onClick={add}>
+          Add
+        </button>
+        <button className="bg-blue-300 py-2 px-10 rounded" onClick={subtract}>
+          Subtract
+        </button>
+        <button className="bg-yellow-300 py-2 px-10 rounded" onClick={multiply}>
+          Multiply
+        </button>
+        <button className="bg-green-300 py-2 px-10 rounded" onClick={divide}>
+          Divide
+        </button>
+      </div>
+      <button
+        onClick={reset}
+        className="bg-white text-black px-10 py-2 rounded font-semibold text-2xl mt-5"
+      >
+        Reset
+      </button>
     </div>
   );
 }
